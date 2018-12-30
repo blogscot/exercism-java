@@ -1,9 +1,8 @@
 class ReverseString {
 
     String reverse(String inputString) {
-        if (inputString.isEmpty())
-            return "";
-        else
-            return reverse(inputString.substring(1)) + inputString.substring(0, 1);
+        return inputString.chars()
+                .mapToObj(Character::toString)
+                .reduce("", (acc, c) -> c + acc);
     }
 }
