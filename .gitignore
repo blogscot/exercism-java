@@ -1,0 +1,6 @@
+.gradle/
+.idea/
+build/
+.solution.json
+build.gradle
+TUTORIAL.md
