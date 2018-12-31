@@ -1,22 +1,22 @@
-import java.util.function.Predicate;
+import java.util.HashMap;
 
 class RaindropConverter {
+  private static final HashMap<Integer, String> raindrops = new HashMap<>();
+
+  static {
+    raindrops.put(3, "Pling");
+    raindrops.put(5, "Plang");
+    raindrops.put(7, "Plong");
+  }
 
   String convert(int number) {
 
-    Predicate<Integer> isDivisibleBy = (var i) -> number % i == 0;
-
-    var sb = new StringBuilder();
-    var isDivBy3 = isDivisibleBy.test(3);
-    var isDivBy5 = isDivisibleBy.test(5);
-    var isDivBy7 = isDivisibleBy.test(7);
-
-    if (isDivBy3) sb.append("Pling");
-    if (isDivBy5) sb.append("Plang");
-    if (isDivBy7) sb.append("Plong");
-    if (!(isDivBy3 || isDivBy5 || isDivBy7)) sb.append(number);
-
-    return sb.toString();
+    return raindrops
+        .keySet()
+        .stream()
+        .filter(key -> number % key == 0)
+        .map(raindrops::get)
+        .reduce(String::concat)
+        .orElse(Integer.toString(number));
   }
-
 }

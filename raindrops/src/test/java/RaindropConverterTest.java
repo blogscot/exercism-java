@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 public class RaindropConverterTest {
 
-  private RaindropConverter raindropConverter = new RaindropConverter();
+  private final RaindropConverter raindropConverter = new RaindropConverter();
 
   @Test
   public void soundFor1Is1() {
