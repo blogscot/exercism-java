@@ -10,9 +10,7 @@ class IsogramChecker {
         .filter(Character::isLetter)
         .collect(Collectors.toList());
 
-    var lettersSet = new HashSet<>(letters);
-
-    return letters.size() == lettersSet.size();
+    return letters.size() == new HashSet<>(letters).size();
   }
 
 }
