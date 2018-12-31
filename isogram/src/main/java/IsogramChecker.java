@@ -6,7 +6,7 @@ class IsogramChecker {
   boolean isIsogram(String phrase) {
     var letters = phrase
         .chars()
-        .mapToObj(c -> Character.toLowerCase((char) c))
+        .mapToObj(Character::toLowerCase)
         .filter(Character::isLetter)
         .collect(Collectors.toList());
 
