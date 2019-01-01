@@ -1,6 +1,7 @@
 .gradle/
 .idea/
 build/
+*.iml
 .solution.json
 build.gradle
 TUTORIAL.md
