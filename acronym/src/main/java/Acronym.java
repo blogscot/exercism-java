@@ -1,18 +1,20 @@
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
+import static java.util.Objects.requireNonNull;
 
 class Acronym {
-  private String acronym;
+  private final String acronym;
 
   Acronym(String phrase) {
-    Pattern pattern = Pattern.compile("(\\b\\w|[A-Z][a-z])");
-    StringBuilder builder = new StringBuilder();
-    var matches = pattern.matcher(phrase.replace("'", ""));
+    requireNonNull(phrase);
 
-    while (matches.find()) {
-      String group = matches.group();
-      builder.append(group.toUpperCase());
-    }
-    acronym = builder.toString();
+    acronym = Pattern.compile("\\W+")
+        .splitAsStream(phrase.replace("'", ""))
+        .map(word -> word.charAt(0))
+        .map(Character::toUpperCase)
+        .map(c -> Character.toString(c))
+        .collect(Collectors.joining());
   }
 
   String getAcronym() {
