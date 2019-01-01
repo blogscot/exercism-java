@@ -23,6 +23,10 @@ class PigLatinTranslator {
       return word.substring(3) + word.substring(0, 3) + "ay";
     } else if (word.charAt(0) == 'q' && word.charAt(1) != 'u') {
       return word.substring(1) + "qay";
+    } else if (word.startsWith("yt")) {
+      return word + "ay";
+    } else if (word.startsWith("xr")) {
+      return word + "ay";
     } else if (word.startsWith("ch")) {
       return word.substring(2) + "chay";
     } else if (word.startsWith("qu")) {
@@ -33,10 +37,6 @@ class PigLatinTranslator {
       return word.substring(2) + "thay";
     } else if (word.startsWith("sch")) {
       return word.substring(3) + "schay";
-    } else if (word.startsWith("yt")) {
-      return word + "ay";
-    } else if (word.startsWith("xr")) {
-      return word + "ay";
     } else if (word.startsWith("rh")) {
       return word.substring(2) + "rhay";
     } else if (word.startsWith("y")) {
@@ -46,7 +46,7 @@ class PigLatinTranslator {
   }
 
   private boolean startsWithVowel(String word) {
-    String[] vowels = "aeiou".split("");
+    var vowels = "aeiou".split("");
     return Stream.of(vowels).anyMatch(word::startsWith);
   }
 }
