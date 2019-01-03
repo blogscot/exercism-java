@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 class IsbnVerifier {
 
   boolean isValid(String stringToVerify) {
-    if (stringToVerify.length() == 0) return false;
+    if (stringToVerify.isEmpty()) return false;
 
     List<Integer> digits = stringToVerify
         .codePoints()
