@@ -34,7 +34,6 @@ class DiamondPrinter {
       newLine[right] = letter;
       output.add(String.valueOf(newLine));
     }
-
     return output;
   }
 
@@ -47,6 +46,4 @@ class DiamondPrinter {
     Arrays.fill(array, ' ');
     return array;
   }
-
-
 }
