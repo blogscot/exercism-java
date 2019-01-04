@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class DiamondPrinter {
@@ -37,15 +38,13 @@ class DiamondPrinter {
     return output;
   }
 
-  private static int getLineWidth(char letter) {
+  private int getLineWidth(char letter) {
     return 1 + 2 * (letter - 'A');
   }
 
-  private static char[] getNewLine(int lineWidth) {
+  private char[] getNewLine(int lineWidth) {
     var array = new char[lineWidth];
-    for (int i = 0; i < lineWidth; i++) {
-      array[i] = ' ';
-    }
+    Arrays.fill(array, ' ');
     return array;
   }
 
