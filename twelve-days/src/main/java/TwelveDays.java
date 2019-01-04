@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 class TwelveDays {
 
@@ -37,11 +38,10 @@ class TwelveDays {
   private static String getGifts(int numGifts) {
     if (numGifts == 0) return "a Partridge in a Pear Tree";
 
-    var currentGifts = new ArrayList<String>();
-    for (int i = numGifts; i >= 0; i--) {
-      currentGifts.add(gifts[i]);
-    }
-    return String.join(", ", currentGifts);
+    return IntStream.rangeClosed(0, numGifts)
+        .map(i -> numGifts - i) // count downTo
+        .mapToObj(i -> gifts[i])
+        .collect(Collectors.joining(", "));
   }
 
   String verse(int verseNumber) {
@@ -50,12 +50,9 @@ class TwelveDays {
   }
 
   String verses(int startVerse, int endVerse) {
-    var verses = new ArrayList<String>();
-
-    for (int i = startVerse; i <= endVerse; i++) {
-      verses.add(verse(i));
-    }
-    return String.join("\n", verses);
+    return IntStream.rangeClosed(startVerse, endVerse)
+        .mapToObj(this::verse)
+        .collect(Collectors.joining("\n"));
   }
 
   String sing() {
