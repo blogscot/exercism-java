@@ -15,23 +15,20 @@ class DiamondPrinter {
 
     while (left >= 0) {
       var newLine = getNewLine(lineWidth);
-      newLine[left] = letter;
-      newLine[right] = letter++;
+      newLine[left--] = letter;
+      newLine[right++] = letter++;
       output.add(String.valueOf(newLine));
-      left--;
-      right++;
     }
 
+    // Don't repeat middle line
     left++;
     right--;
     letter--;
 
     while (left < start) {
-      left++;
-      right--;
       var newLine = getNewLine(lineWidth);
-      newLine[left] = --letter;
-      newLine[right] = letter;
+      newLine[++left] = --letter;
+      newLine[--right] = letter;
       output.add(String.valueOf(newLine));
     }
     return output;
@@ -42,8 +39,8 @@ class DiamondPrinter {
   }
 
   private char[] getNewLine(int lineWidth) {
-    var array = new char[lineWidth];
-    Arrays.fill(array, ' ');
-    return array;
+    var line = new char[lineWidth];
+    Arrays.fill(line, ' ');
+    return line;
   }
 }
